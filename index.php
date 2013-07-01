@@ -30,6 +30,7 @@ $app->post('/', function () use ($app, $data) {
 
 	$response = array('status' => 'success');
 
+	// gestion loyer
 	if (!isset($_POST['actual']) || !is_numeric($_POST['actual'])) {
 		$response['status'] = 'error';
 		$response['message'] = 'Loyer obligatoire';
@@ -37,6 +38,7 @@ $app->post('/', function () use ($app, $data) {
 		$actual = $_POST['actual'];
 	}
 
+	// gestion superficie
 	if (!isset($_POST['size']) || !is_numeric($_POST['size'])) {
 		$response['status'] = 'error';
 		$response['message'] = 'Superficie obligatoire';
@@ -44,6 +46,7 @@ $app->post('/', function () use ($app, $data) {
 		$size = $_POST['size'];
 	}
 
+	// gestion zipcode
 	if (!isset($_POST['zipcode']) || !is_numeric($_POST['zipcode']) || !is_in_paris($app, $_POST['zipcode'])) {
 		$response['status'] = 'error';
 		$response['message'] = 'Le code postal doit être dans l\'agglom&eacute;ration parisienne';
@@ -65,6 +68,7 @@ $app->post('/', function () use ($app, $data) {
 	$response['data']['mediane'] = $mediane;
 
 
+	// on fait la réponse
 	$answer = '';
 	$answer .= 'Vous habitez dans la commune '.$response['data']['lieu'].':';
 	$answer .= '<br/>Vous êtes donc dans la zone de loyer <b>'.$response['data']['zone'].'</b>';
@@ -89,11 +93,6 @@ $app->post('/', function () use ($app, $data) {
 	return;
 
 });
-
-$app->get('/hello/', function () use ($app) {
-	echo 'boum';
-});
-
 
 $app->run();
 
