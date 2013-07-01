@@ -1,13 +1,5 @@
 <?php
 
-/**
-*
-* Formulaire de calcul de Loyer
-*
-**/
-
-$path_du_site = $_SERVER['REQUEST_URI'];
-
 require 'vendor/autoload.php';
 
 \Slim\Slim::registerAutoloader();
@@ -16,7 +8,7 @@ $app = new \Slim\Slim();
 $app->config(array(
 	'debug' => true,
 	'templates.path' => './views/',
-	'assets_path' => $path_du_site.'assets',
+	'assets_path' => '/form_loyer/assets',
 	'zipcodes' => include 'assets/data/zipcodes.php',
 	'medianes' => include 'assets/data/medianes.php'
 ));
@@ -78,13 +70,13 @@ $app->post('/', function () use ($app, $data) {
 
 	// on fait la réponse
 	$answer = '';
-	$answer .= 'Vous habitez dans la commune '.$response['data']['lieu'].':';
+	$answer .= 'Vous habitez dans la commune '.$response['data']['lieu'];
 	$answer .= '<br/>Vous êtes donc dans la zone de loyer <b>'.$response['data']['zone'].'</b>';
 
 	if (!$response['data']['mediane']) {
 		$answer .= '<br/>Désolé, nous ne connaissons pas le loyer moyen pour un habitat de votre type dans cette zone de loyer.';
 	} else {
-		$answer .= '<br/>Le loyer moyen dans cette zone pour un habitat de type '.$type.' est de <b>'.$mediane.'</b>&euro;/m&sup2;';
+		$answer .= '<br/>Le loyer moyen dans cette zone pour un habitat de type '.$type.' est de <b>'.$mediane.'&euro;</b> / m&sup2;';
 
 		$maxLoyer = ($size * $mediane * 1.15);
 		$answer .= '<br/><br/> Vous devriez payer un loyer maximum de '.$maxLoyer.'&euro;';
@@ -92,7 +84,7 @@ $app->post('/', function () use ($app, $data) {
 		if ($maxLoyer >= $actual) {
 			$answer .= ' -&gt; Votre loyer est dans les normes.';
 		} else {
-			$answer .= ' -&gt; vous payez donc '.($actual - $maxLoyer).'&euro; de trop.';
+			$answer .= ' -&gt; vous payez donc <b>'.($actual - $maxLoyer).'&euro;</b> de trop.';
 		}
 	}
 
