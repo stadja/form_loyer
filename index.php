@@ -1,5 +1,13 @@
 <?php
 
+/**
+*
+* Formulaire de calcul de Loyer
+*
+**/
+
+$path_du_site = $_SERVER['REQUEST_URI'];
+
 require 'vendor/autoload.php';
 
 \Slim\Slim::registerAutoloader();
@@ -8,7 +16,7 @@ $app = new \Slim\Slim();
 $app->config(array(
 	'debug' => true,
 	'templates.path' => './views/',
-	'assets_path' => '/form_loyer/assets',
+	'assets_path' => $path_du_site.'assets',
 	'zipcodes' => include 'assets/data/zipcodes.php',
 	'medianes' => include 'assets/data/medianes.php'
 ));
