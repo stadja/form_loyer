@@ -8,7 +8,8 @@
 	<link href="<?php echo $app->config('assets_path'); ?>/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
 </head>
 <body>
-
+<div class="container" style="margin: 0px auto; max-width: 700px;">
+	<a href='#' id='newCalc' style='display: none;'>Nouveau Calcul</a>
 	<form id='form_loyer' action="" method="POST" class="form-horizontal">
 		<div class="control-group">
 			<label class="control-label" for="inputZipcode">Code postal*</label>
@@ -51,7 +52,7 @@
 
 	<div class="alert alert-info" style='display: none;'>
 	</div>
-
+</div>
 	<script src="<?php echo $app->config('assets_path'); ?>/js/jquery.min.js"></script>
 	<script src="<?php echo $app->config('assets_path'); ?>/js/bootstrap.min.js"></script>
 	<script src="<?php echo $app->config('assets_path'); ?>/js/post.js"></script>

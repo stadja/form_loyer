@@ -14,9 +14,18 @@ $('#form_loyer').submit(function() {
 			} else {
 				$('.alert-info').html(data.message);
 				$('.alert-info').slideDown();
+				$('#form_loyer').slideUp();
+				$('#newCalc').show();
 			}
 
 		}
 	});
+	return false;
+});
+
+$('#newCalc').click(function() {
+	$(this).hide();
+	$('#form_loyer').slideDown();
+	$('.alert-info').slideUp();
 	return false;
 });
