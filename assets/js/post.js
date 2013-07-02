@@ -1,6 +1,6 @@
 $('#form_loyer').submit(function() {
 	$('.alert-error').slideUp();
-	$('.alert-info').slideUp();
+	$('.alert-success').slideUp();
 	$.ajax({
 		type: "POST",
 		dataType: "json",
@@ -12,8 +12,8 @@ $('#form_loyer').submit(function() {
 				$('.alert-error').html(data.message);
 				$('.alert-error').slideDown();
 			} else {
-				$('.alert-info').html(data.message);
-				$('.alert-info').slideDown();
+				$('.alert-success').html(data.message);
+				$('.alert-success').slideDown();
 				$('#form_loyer').slideUp();
 				$('#newCalc').show();
 			}
@@ -26,6 +26,6 @@ $('#form_loyer').submit(function() {
 $('#newCalc').click(function() {
 	$(this).hide();
 	$('#form_loyer').slideDown();
-	$('.alert-info').slideUp();
+	$('.alert-success').slideUp();
 	return false;
 });
