@@ -93,6 +93,7 @@ $app->post('/', function () use ($app, $data) {
 		$answer .= '<br/><br/>Selon le ministère, un propriétaire qui souhaite relouer son bien ne pourra pas dépasser le loyer médian + 15%.';
 		$answer .= '<br/><br/>Par ailleurs, vous pourrez n&eacute;gocier avec votre propri&eacute;taire actuel de baisser votre loyer en-dessous de ce plafond. En cas de refus, une commission de concertation tentera de trouver un arrangement, avant qu&rsquo;un juge tranche au final en cas de d&eacute;saccord.'; 
 		$answer .= '<br/><br/>Pour l\'instant, seules les donn&eacute;es de l\'agglom&eacute;ration parisienne sont disponibles. On ne peut donc pas r&eacute;aliser cette simulation ailleurs en France. Mais les autres observatoires n&eacute;cessaires &agrave; l\'application de la loi seront mis en place d\'ici 2014.';
+		$answer .= '<br/><br/>Cet encadrement des loyers ne concerne que lecteur locatif priv&eacute;, pas le logement social.';
 		$answer .= '</small>';
 	}
 
