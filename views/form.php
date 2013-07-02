@@ -48,7 +48,7 @@
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<button type="submit" class="btn">Simuler votre futur loyer maximal</button>
+					<button type="submit" class="btn btn-primary">Simuler votre futur loyer maximal</button>
 				</div>
 			</div>
 		</form>
