@@ -6,7 +6,6 @@ require 'vendor/autoload.php';
 
 $app = new \Slim\Slim();
 $app->config(array(
-	'debug' => true,
 	'templates.path' => './views/',
 	'assets_path' => '/form_loyer/assets',
 	'zipcodes' => include 'assets/data/zipcodes.php',
