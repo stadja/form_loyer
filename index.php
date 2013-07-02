@@ -66,7 +66,8 @@ $app->post('/', function () use ($app, $data) {
 	$mediane = get_mediane($app, $type, $response['data']['zone']);
 	$response['data']['mediane'] = $mediane;
 
-	$maxLoyer = ($size * $mediane * 1.15);
+	$maxLoyer = round($size * $mediane * 1.15);
+	$medianLoyer = ($size * $mediane);
 
 
 	// on fait la réponse
@@ -80,8 +81,10 @@ $app->post('/', function () use ($app, $data) {
 
 		if ($maxLoyer >= $actual) {
 			$answer .= '<br/>Votre loyer est donc dans les normes';
+			$answer .= '<br/><br/>Vous êtes à '.round(100 - ($actual*100/$medianLoyer)).'% en dessous du loyer médian de votre zone';
 		} else {
 			$answer .= '<br/><b>Soit une baisse de </b><br/>'.($actual - $maxLoyer).' euros';
+			$answer .= '<br/><br/>Vous êtes à '.round(($actual*100/$medianLoyer) - 100).'% au dessus du loyer médian de votre zone';
 		}
 
 		$answer .= '<br/><br/><small>';

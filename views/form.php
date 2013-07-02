@@ -6,16 +6,20 @@
 	<!-- Bootstrap -->
 	<link href="<?php echo $app->config('assets_path'); ?>/css/bootstrap.css" rel="stylesheet" media="screen">
 	<link href="<?php echo $app->config('assets_path'); ?>/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+	<style type="text/css">
+    	#newCalc a{
+    		color: white;
+    	}
+    </style>
 </head>
 <body>
-	<div class="container" style="margin: 0px auto; max-width: 700px;">
+	<div class="container" style="margin: 20px auto; max-width: 700px;">
 		<h4>
 			Franciliens, calculez votre nouveau loyer gr&acirc;ce &agrave; la loi Duflot
 		</h4>
 		    <div class="alert alert-info">
 		    Le projet de loi Duflot pr&eacute;voit d&rsquo;encadrer les loyers en 2014. Gr&acirc;ce au simulateur de Mediapart, qui a eu acc&egrave;s aux donn&eacute;es de l&rsquo;OLAP (Observatoire des loyers de l&rsquo;agglom&eacute;ration parisienne), calculez le loyer maximal que vous payerez pour votre futur appartement. Ou le montant que vous pourrez exiger de votre actuel propri&eacute;taire.
 		    </div>
-		<a href='#' id='newCalc' style='display: none;'>Nouveau Calcul</a>
 		<form id='form_loyer' action="" method="POST" class="form-horizontal">
 			<div class="control-group">
 				<label class="control-label" for="inputZipcode">Le code postal de votre appartement*</label>
@@ -58,6 +62,10 @@
 
 		<div class="alert alert-success" style='display: none;'>
 		</div>
+
+		<span class="label label-success" id="newCalc" style='text-align: center; margin: 0px auto; max-width: 180px; display: none; font-size: 15px;'>
+			<a href='#'>Recommencer le calcul</a>
+		</span>
 	</div>
 	<script src="<?php echo $app->config('assets_path'); ?>/js/jquery.min.js"></script>
 	<script src="<?php echo $app->config('assets_path'); ?>/js/bootstrap.min.js"></script>
