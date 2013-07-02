@@ -81,15 +81,18 @@ $app->post('/', function () use ($app, $data) {
 
 		if ($maxLoyer >= $actual) {
 			$answer .= '<br/>Votre loyer est donc dans les normes';
-			$answer .= '<br/><br/>Vous êtes à '.round(100 - ($actual*100/$medianLoyer)).'% en dessous du loyer médian de votre zone';
 		} else {
 			$answer .= '<br/><b>Soit une baisse de </b><br/>'.($actual - $maxLoyer).' euros';
-			$answer .= '<br/><br/>Vous êtes à '.round(($actual*100/$medianLoyer) - 100).'% au dessus du loyer médian de votre zone';
 		}
 
 		$answer .= '<br/><br/><small>';
 		$answer .= '<h6>Explications du calcul</h6>';
 		$answer .= 'Le loyer median pour un '.$type.' dans votre zone ('.$response['data']['zone'].') est de <b>'.$mediane.' euros</b> / m&sup2;';
+		if ($maxLoyer >= $actual) {
+			$answer .= '<br/>Vous êtes à '.round(100 - ($actual*100/$medianLoyer)).'% en dessous du loyer médian de votre zone';
+		} else {
+			$answer .= '<br/>Vous êtes à '.round(($actual*100/$medianLoyer) - 100).'% au dessus du loyer médian de votre zone';
+		}
 		$answer .= '<br/><br/>Selon le ministère, un propriétaire qui souhaite relouer son bien ne pourra pas dépasser le loyer médian + 15%.';
 		$answer .= '<br/><br/>Par ailleurs, vous pourrez n&eacute;gocier avec votre propri&eacute;taire actuel de baisser votre loyer en-dessous de ce plafond. En cas de refus, une commission de concertation tentera de trouver un arrangement, avant qu&rsquo;un juge tranche au final en cas de d&eacute;saccord.'; 
 		$answer .= '<br/><br/>Pour l\'instant, seules les donn&eacute;es de l\'agglom&eacute;ration parisienne sont disponibles. On ne peut donc pas r&eacute;aliser cette simulation ailleurs en France. Mais les autres observatoires n&eacute;cessaires &agrave; l\'application de la loi seront mis en place d\'ici 2014.';
