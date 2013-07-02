@@ -25,7 +25,7 @@
 		<div class="control-group">
 			<label class="control-label" for="inputType">Type d'appartement*</label>
 			<div class="controls">
-				<select name="type">
+				<select name="type" id="inputType">
 					<option value="T1">T1</option>
 					<option value="T2">T2</option>
 					<option value="T3">T3</option>
