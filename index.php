@@ -1,5 +1,7 @@
 <?php
 
+$path_du_site = $_SERVER['REQUEST_URI'];
+
 require 'vendor/autoload.php';
 
 \Slim\Slim::registerAutoloader();
@@ -7,7 +9,8 @@ require 'vendor/autoload.php';
 $app = new \Slim\Slim();
 $app->config(array(
 	'templates.path' => './views/',
-	'assets_path' => '/form_loyer/assets',
+	'assets_path' => $path_du_site.'assets',
+	'path' => $path_du_site,
 	'zipcodes' => include 'assets/data/zipcodes.php',
 	'medianes' => include 'assets/data/medianes.php'
 ));
@@ -26,6 +29,8 @@ $app->get('/', function () use ($app, $data) {
 * Calcul de la réponse
 **/
 $app->post('/', function () use ($app, $data) {
+
+	
 
 	$response = array('status' => 'success');
 
@@ -53,9 +58,11 @@ $app->post('/', function () use ($app, $data) {
 		$zipcode = is_in_paris($app, $_POST['zipcode']);
 	}
 
+	header("Content-Type: application/json; charset=utf-8");
+
 	if ($response['status'] == 'error') {
 		echo json_encode($response);
-		return;
+		exit;
 	}
 
 	$type = $_POST['type'];
@@ -101,8 +108,9 @@ $app->post('/', function () use ($app, $data) {
 	}
 
 	$response['message'] = $answer;
+
 	echo json_encode($response);
-	return;
+	exit;
 
 });
 

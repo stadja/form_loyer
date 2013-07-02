@@ -4,7 +4,7 @@ $('#form_loyer').submit(function() {
 	$.ajax({
 		type: "POST",
 		dataType: "json",
-		url: '',
+		url: path,
 		data: $('#form_loyer').serialize(),
 		success: function(data) {
 			if (data.status == 'error') {
@@ -14,10 +14,8 @@ $('#form_loyer').submit(function() {
 				$('.alert-success').html(data.message);
 				$('.alert-success').slideDown();
 				$('#form_loyer').slideUp();
-
 				$('#newCalc').css('display', 'block');
 			}
-
 		}
 	});
 	return false;
