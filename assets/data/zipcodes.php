@@ -292,7 +292,7 @@ return array(
 	'92600' => array(4, 'Asnières-sur-Seine'),
 	'92700' => array(5, 'Colombes'),
 	'92800' => array(4, 'Puteaux'),
-	'93000' => array(5, 'Aubervilliers'),
+	'93300' => array(5, 'Aubervilliers'),
 	'93000' => array(5, 'Bobigny'),
 	'93013' => array(6, 'Le Bourget'),
 	'93100' => array(5, 'Montreuil'),
